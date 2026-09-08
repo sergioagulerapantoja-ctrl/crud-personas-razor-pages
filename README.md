@@ -1,73 +1,50 @@
-# 2026web3
+# CRUD de Personas con Razor Pages
 
-Aplicacion ASP.NET Core Razor Pages con .NET 10.
+Aplicación ASP.NET Core Razor Pages (.NET 10) que implementa un CRUD completo de personas con Entity Framework Core y SQL Server.
 
-## Entity Framework Core
+## Relaciones implementadas
 
-El proyecto esta preparado para trabajar con Entity Framework Core 10 y SQL Server.
+- Persona → País: muchos a uno.
+- Persona ↔ Pasaporte: uno a uno.
+- Persona ↔ Materia: muchos a muchos mediante la tabla `Inscripcion`.
 
-Paquetes instalados en el proyecto:
+El formulario permite elegir un país, registrar un pasaporte y seleccionar varias materias. El listado y la vista de detalle muestran todas estas relaciones.
 
-- `Microsoft.EntityFrameworkCore.SqlServer`
-- `Microsoft.EntityFrameworkCore.Design`
-- `Microsoft.EntityFrameworkCore.Tools`
+## Funcionalidades
 
-El `ApplicationDbContext` esta en `Data/ApplicationDbContext.cs` y se registra en `Program.cs` usando la cadena `ConnectionStrings:DefaultConnection`.
+- Crear, listar, ver, editar y eliminar personas.
+- Validación de campos obligatorios y fecha de nacimiento.
+- Validación de números de pasaporte únicos.
+- Catálogo inicial de países y materias mediante migraciones.
+- Eliminación en cascada del pasaporte y las inscripciones de la persona.
 
-La cadena de conexion vive en `appsettings.json`:
+## Cómo ejecutar
 
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=TODO_SQL_SERVER;Database=2026web3;Trusted_Connection=True;TrustServerCertificate=True;"
-  }
-}
-```
+Requisitos:
 
-Cambiar `TODO_SQL_SERVER` cuando ya se sepa a que servidor SQL Server debe apuntar la aplicacion.
+- .NET SDK 10.
+- SQL Server LocalDB (incluido habitualmente con Visual Studio) o una instancia de SQL Server.
 
-## Comandos de instalacion
-
-Ejecutar desde la raiz del proyecto:
-
-```powershell
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 10.*
-dotnet add package Microsoft.EntityFrameworkCore.Design --version 10.*
-dotnet add package Microsoft.EntityFrameworkCore.Tools --version 10.*
-```
-
-Instalar la herramienta de EF Core si aun no existe:
-
-```powershell
-dotnet tool install --global dotnet-ef --version 10.*
-```
-
-Actualizar la herramienta si ya estaba instalada:
-
-```powershell
-dotnet tool update --global dotnet-ef --version 10.*
-```
-
-## Comandos de verificacion
+Desde la raíz del proyecto:
 
 ```powershell
 dotnet restore
-dotnet ef --version
-dotnet build
+dotnet run
 ```
 
-La version esperada de `dotnet-ef` para este proyecto es `10.x`.
+En desarrollo, la aplicación aplica automáticamente las migraciones y crea la base `CrudPersonasRazor` en `(localdb)\MSSQLLocalDB`.
 
-## Migraciones
-
-Cuando ya exista un `DbContext` configurado, crear una migracion inicial:
-
-```powershell
-dotnet ef migrations add InitialCreate
-```
-
-Aplicar migraciones a la base de datos:
+Si usas otra instancia, cambia `ConnectionStrings:DefaultConnection` en `appsettings.json` y ejecuta:
 
 ```powershell
 dotnet ef database update
 ```
+
+Después abre la dirección que muestre la terminal y entra en **Personas**.
+
+## Tecnologías
+
+- ASP.NET Core Razor Pages 10
+- Entity Framework Core 10
+- SQL Server
+- Bootstrap 5

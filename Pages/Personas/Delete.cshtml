@@ -1,0 +1,30 @@
+@page "{id:int}"
+@model _2026web3.Pages.Personas.DeleteModel
+@{
+    ViewData["Title"] = "Eliminar persona";
+}
+
+<h1>Eliminar persona</h1>
+
+<div class="alert alert-warning" role="alert">
+    Esta acción eliminará permanentemente a la persona, su pasaporte y sus inscripciones en materias.
+</div>
+
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+        <h2 class="h5">@Model.Persona.Name</h2>
+        <dl class="row mb-0">
+            <dt class="col-sm-4">Fecha de nacimiento</dt>
+            <dd class="col-sm-8">@Model.Persona.dob.ToString("dd/MM/yyyy")</dd>
+            <dt class="col-sm-4">País</dt>
+            <dd class="col-sm-8">@Model.Persona.Pais.Name</dd>
+            <dt class="col-sm-4">Pasaporte</dt>
+            <dd class="col-sm-8">@Model.Persona.Pasaporte?.Numero</dd>
+        </dl>
+    </div>
+</div>
+
+<form method="post" class="d-flex gap-2">
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a asp-page="Index" class="btn btn-outline-secondary">Cancelar</a>
+</form>

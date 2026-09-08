@@ -1,0 +1,22 @@
+## .NET build output
+bin/
+obj/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Rider / VS Code
+.idea/
+.vscode/
+
+## Local databases and logs
+*.db
+*.db-shm
+*.db-wal
+*.log
+
+## Operating system files
+.DS_Store
+Thumbs.db

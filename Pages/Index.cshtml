@@ -1,10 +1,15 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-4">
+        <h1 class="display-5 fw-bold">CRUD de Personas</h1>
+        <p class="col-lg-8 fs-5">
+            Aplicación Razor Pages para administrar personas y sus relaciones con país, pasaporte y materias.
+        </p>
+        <a asp-page="/Personas/Index" class="btn btn-primary btn-lg">Administrar personas</a>
+    </div>
 </div>

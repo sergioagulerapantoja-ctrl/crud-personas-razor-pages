@@ -1,0 +1,50 @@
+@page "{id:int}"
+@model _2026web3.Pages.Personas.DetailsModel
+@{
+    ViewData["Title"] = "Detalle de persona";
+}
+
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <h1 class="mb-1">@Model.Persona.Name</h1>
+        <p class="text-muted mb-0">Detalle de la persona registrada.</p>
+    </div>
+    <a asp-page="Edit" asp-route-id="@Model.Persona.Id" class="btn btn-primary">Editar</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-4">Fecha de nacimiento</dt>
+            <dd class="col-sm-8">@Model.Persona.dob.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-4">País</dt>
+            <dd class="col-sm-8">@Model.Persona.Pais.Name</dd>
+
+            <dt class="col-sm-4">Número de pasaporte</dt>
+            <dd class="col-sm-8">@Model.Persona.Pasaporte?.Numero</dd>
+
+            <dt class="col-sm-4">Materias</dt>
+            <dd class="col-sm-8">
+                @if (Model.Persona.Materias.Count == 0)
+                {
+                    <span class="text-muted">Sin materias asignadas</span>
+                }
+                else
+                {
+                    <div class="d-flex flex-wrap gap-2">
+                        @foreach (var materia in Model.Persona.Materias.OrderBy(m => m.Name))
+                        {
+                            <span class="badge text-bg-secondary">@materia.Name · @materia.Creditos créditos</span>
+                        }
+                    </div>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3 d-flex gap-2">
+    <a asp-page="Index" class="btn btn-outline-secondary">Volver</a>
+    <a asp-page="Delete" asp-route-id="@Model.Persona.Id" class="btn btn-outline-danger">Eliminar</a>
+</div>
