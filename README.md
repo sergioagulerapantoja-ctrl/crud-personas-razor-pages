@@ -10,6 +10,8 @@ Aplicación ASP.NET Core Razor Pages (.NET 10) que implementa un CRUD completo d
 
 El formulario permite elegir un país, registrar un pasaporte y seleccionar varias materias. El listado y la vista de detalle muestran todas estas relaciones.
 
+El archivo `entrega-modelos-dbcontext.zip` contiene las carpetas `Models` y `Data` solicitadas para la entrega.
+
 ## Funcionalidades
 
 - Crear, listar, ver, editar y eliminar personas.
